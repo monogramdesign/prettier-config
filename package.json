@@ -1,0 +1,12 @@
+{
+  "name": "@koddsson/prettier",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Kristján Oddsson <koddsson@gmail.com>",
+  "license": "MIT",
+  "description": "My prettier config"
+}
