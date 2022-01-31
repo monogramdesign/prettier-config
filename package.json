@@ -1,6 +1,6 @@
 {
   "name": "@monogramdesign/prettier-config",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "Prettier config used at Monogram (adapted from @github/prettier-config)",
   "repository": "monogramdesign/prettier-config",
   "keywords": [
@@ -13,6 +13,6 @@
   "author": "Monogram",
   "main": "index.js",
   "scripts": {
-    "postpublish": "npm publish --ignore-scripts --@github:registry='https://npm.pkg.github.com'"
+    "postpublish": "npm publish --ignore-scripts --@monogramdesign:registry='https://npm.pkg.github.com'"
   }
 }
