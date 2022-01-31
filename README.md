@@ -1,5 +1,5 @@
 # prettier-config
-Prettier config used at GitHub
+Prettier config used at Monogram (forked from GitHub)
 
 ## Usage
 
