@@ -1,5 +1,5 @@
 {
-  "name": "@monogram/prettier-config",
+  "name": "@monogramdesign/prettier-config",
   "version": "0.0.5",
   "description": "Prettier config used at Monogram (adapted from @github/prettier-config)",
   "repository": "monogramdesign/prettier-config",
