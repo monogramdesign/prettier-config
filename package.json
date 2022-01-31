@@ -1,8 +1,8 @@
 {
-  "name": "@github/prettier-config",
-  "version": "0.0.4",
-  "description": "Prettier config used at GitHub",
-  "repository": "github/prettier-config",
+  "name": "@monogram/prettier-config",
+  "version": "0.0.5",
+  "description": "Prettier config used at Monogram (adapted from @github/prettier-config)",
+  "repository": "monogramdesign/prettier-config",
   "keywords": [
     "prettier"
   ],
@@ -10,7 +10,7 @@
     "index.js"
   ],
   "license": "MIT",
-  "author": "GitHub Inc.",
+  "author": "Monogram",
   "main": "index.js",
   "scripts": {
     "postpublish": "npm publish --ignore-scripts --@github:registry='https://npm.pkg.github.com'"
