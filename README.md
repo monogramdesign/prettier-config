@@ -6,7 +6,7 @@ Prettier config used at Monogram (forked from GitHub)
 Install the package using `npm` (or `yarn`)
 
 ```sh
-yarn add --dev @monogramdesign/prettier-config
+yarn add --dev @monogram/prettier-config
 ```
 
 Add the `prettier` key to your `package.json`
@@ -20,10 +20,11 @@ index 2ecef3d..260838f 100644
    "keywords": [
      "prettier"
    ],
-+  "prettier": "@monogramdesign/prettier-config",
++  "prettier": "@monogram/prettier-config",
    "license": "MIT",
    "author": "Monogram",
    "main": "index.js"
  ```
  
  [Check out the `prettier` documentation for more info on sharing configurations](https://prettier.io/docs/en/configuration.html#sharing-configurations).
+

@@ -1,8 +1,8 @@
 {
-  "name": "@monogramdesign/prettier-config",
-  "version": "0.0.7",
+  "name": "@monogram/prettier-config",
+  "version": "0.0.8",
   "description": "Prettier config used at Monogram (adapted from @github/prettier-config)",
-  "repository": "monogramdesign/prettier-config",
+  "repository": "monogram/prettier-config",
   "keywords": [
     "prettier"
   ],
@@ -11,8 +11,5 @@
   ],
   "license": "MIT",
   "author": "Monogram",
-  "main": "index.js",
-  "scripts": {
-    "postpublish": "npm publish --ignore-scripts --@monogramdesign:registry='https://npm.pkg.github.com'"
-  }
+  "main": "index.js"
 }
