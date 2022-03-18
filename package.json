@@ -2,7 +2,7 @@
   "name": "@monogram/prettier-config",
   "version": "0.0.8",
   "description": "Prettier config used at Monogram (adapted from @github/prettier-config)",
-  "repository": "monogram/prettier-config",
+  "repository": "monogramdesign/prettier-config",
   "keywords": [
     "prettier"
   ],
