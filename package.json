@@ -16,7 +16,7 @@
 		"prettier-config": "dist/setup.js"
 	},
 	"files": [
-		"dist/setup.js",
+		"dist/**/*.js",
 		"prettierrc.config.js"
 	],
 	"license": "MIT",

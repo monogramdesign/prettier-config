@@ -2,9 +2,8 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "outDir": "./dist",
-    "outFile": "./dist/setup.js",
     "rootDir": "./src", 
-    "module": "amd",
+    "module": "commonjs",
 		"baseUrl": ".",
     "moduleResolution": "node"
   }
