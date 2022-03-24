@@ -1,0 +1,1 @@
+export const ESLINT_FILENAME = '.eslintrc'
