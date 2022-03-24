@@ -1,6 +1,6 @@
 {
 	"name": "@monogram/prettier-config",
-  "version": "0.1.2-rc",
+	"version": "0.1.2-rc.0",
 	"description": "Prettier config used at monogram.io (adapted from @github/prettier-config)",
 	"repository": "monogramdesign/prettier-config",
 	"keywords": [
