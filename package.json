@@ -9,7 +9,7 @@
 	"scripts": {
 		"preinstall-locally": "yarn build",
 		"install-locally": "npm install -g",
-		"build": "tsc src/setup.ts --outDir ./dist",
+		"build": "tsc --project tsconfig.json",
 		"prepublish": "yarn build"
 	},
 	"bin": {

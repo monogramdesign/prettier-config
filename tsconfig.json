@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
+    "outDir": "./dist",
+    "outFile": "./dist/setup.js",
+    "rootDir": "./src", 
+    "module": "amd",
+		"baseUrl": ".",
+    "moduleResolution": "node"
   }
 }
