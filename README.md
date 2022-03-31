@@ -1,36 +1,42 @@
 # prettier-config
 Prettier config used at [monogram.io](https://monogram.io)
 
-## Usage
+## Installing
 
-Install the package using `npm` (or `yarn`)
+### Auto install
+
+Executing it with `npx` from the project's root will perform the manual installation steps, installing `@monogram/prettier-config` as a dev dependency and adding `"prettier": "@monogram/prettier-config"` to your project's `package.json`.
+```sh
+npx @monogram/prettier-config
+```
+
+### Install manually
+
+Install the package using your package manager
 
 ```sh
-yarn add --dev @monogram/prettier-config
+yarn add -D @monogram/prettier-config
+# or
+npm i -D @monogram/prettier-config
+# or 
+pnpm i -D @monogram/prettier-config
 ```
+
 
 Add the `prettier` key to your `package.json`
 
 ```diff
-diff --git a/package.json b/package.json
-index 2ecef3d..260838f 100644
---- a/package.json
-+++ b/package.json
-@@ -5,6 +5,7 @@
-   "keywords": [
-     "prettier"
-   ],
-+  "prettier": "@monogram/prettier-config",
-   "license": "MIT",
-   "author": "Monogram",
-   "main": "index.js"
++++  "prettier": "@monogram/prettier-config"
  ```
- 
+
+## Extending
+
  Can also be extended like this:
+ 
  ```js
  // .prettierrc.js
  module.exports = {
-  ...require('@github/prettier-config'),
+  ...require('@monogram/prettier-config'),
   tabWidth: 2,
   useTabs: false,
   overrides: [
@@ -49,4 +55,6 @@ index 2ecef3d..260838f 100644
 
  [Check out the `prettier` documentation for more info on sharing configurations](https://prettier.io/docs/en/configuration.html#sharing-configurations).
 
- Adapted from [@github/prettier-config](https://www.npmjs.com/package/@github/prettier-config).
+
+## Acknowledgment
+ Inspired by [@github/prettier-config](https://www.npmjs.com/package/@github/prettier-config).
