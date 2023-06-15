@@ -6,5 +6,5 @@ module.exports = {
   trailingComma: "none",
   bracketSameLine: false,
   semi: false,
-"htmlWhitespaceSensitivity: "ignore"
+  htmlWhitespaceSensitivity: "ignore"
 }
