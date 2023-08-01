@@ -20,11 +20,12 @@
   "license": "MIT",
   "author": "Monogram",
   "main": "prettierrc.config.js",
+  "dependencies": {
+    "prettier-plugin-tailwindcss": "^0.4.1"
+  },
   "devDependencies": {
     "@types/node": "^17.0.23",
     "prettier": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.4.0",
-    "ts-node": "^10.7.0",
     "typescript": "^4.6.2"
   }
 }

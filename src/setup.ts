@@ -1,88 +1,86 @@
 #!/usr/bin/env node
 
-import { stat, writeFile } from 'fs'
+import { stat, writeFile } from "fs";
 import {
-	packageManagers,
-	type PackageManager,
-	installPrefixes,
-	findPackageManager
-} from './package-managers'
-import { question, exec } from './utils'
+  packageManagers,
+  type PackageManager,
+  installPrefixes,
+  findPackageManager,
+} from "./package-managers";
+import { question, exec, PACKAGE_NAME } from "./utils";
 
-const PACKAGE_NAME = '@monogram/prettier-config' as const
-
-setupPrettier()
+setupPrettier();
 
 async function setupPrettier() {
-	const projectDir = process.cwd()
-	const packagePath = `${projectDir}/package.json`
+  const projectDir = process.cwd();
+  const packagePath = `${projectDir}/package.json`;
 
-	stat(packagePath, (error, stats) => {
-		if (stats) {
-			const packageJson = require(packagePath)
-			packageJson.prettier = PACKAGE_NAME
+  stat(packagePath, (error, stats) => {
+    if (stats) {
+      const packageJson = require(packagePath);
+      packageJson.prettier = PACKAGE_NAME;
 
-			const packageJsonString = JSON.stringify(
-				packageJson,
-				null,
-				2 // TODO: read from @monogram/prettier-config
-			)
+      const packageJsonString = JSON.stringify(
+        packageJson,
+        null,
+        2 // TODO: read from @monogram/prettier-config
+      );
 
-			writeFile(packagePath, packageJsonString, async (err) => {
-				if (err) console.error(err)
-				else {
-					console.log('✅ prettier added to package.json')
+      writeFile(packagePath, packageJsonString, async (err) => {
+        if (err) console.error(err);
+        else {
+          console.log("✅ prettier added to package.json");
 
-					const packageManager = await choosePackageManager()
+          const packageManager = await choosePackageManager();
 
-					installDependencies(packageManager)
-				}
-			})
-		} else {
-			throw Error(`Can't found package.json in ${projectDir}`)
-		}
-	})
+          installDependencies(packageManager);
+        }
+      });
+    } else {
+      throw Error(`Can't found package.json in ${projectDir}`);
+    }
+  });
 }
 
 async function choosePackageManager() {
-	let packageManager = findPackageManager()
+  let packageManager = findPackageManager();
 
-	if (packageManager) {
-		console.log(`📦 An existing ${packageManager} installation was found`)
-	} else {
-		const packageManagersOptions = packageManagers.join(', ')
+  if (packageManager) {
+    console.log(`📦 An existing ${packageManager} installation was found`);
+  } else {
+    const packageManagersOptions = packageManagers.join(", ");
 
-		const chosenManager = await question(
-			`Which package manager should be used? \n[${packageManagersOptions}] `
-		)
+    const chosenManager = await question(
+      `Which package manager should be used? \n[${packageManagersOptions}] `
+    );
 
-		if (packageManagersOptions.includes(chosenManager as PackageManager)) {
-			packageManager = chosenManager as PackageManager
-		}
-	}
+    if (packageManagersOptions.includes(chosenManager as PackageManager)) {
+      packageManager = chosenManager as PackageManager;
+    }
+  }
 
-	return packageManager
+  return packageManager;
 }
 
 async function installDependencies(packageManager: PackageManager) {
-	const installPrefix = installPrefixes[packageManager]
+  const installPrefix = installPrefixes[packageManager];
 
-	const installCommand = `${installPrefix} ${PACKAGE_NAME}`
+  const installCommand = `${installPrefix} prettier ${PACKAGE_NAME}`;
 
-	console.log(`📦 Installing dependencies...`)
-	console.log(`${installCommand}\n`)
+  console.log(`📦 Installing dependencies...`);
+  console.log(`${installCommand}\n`);
 
-	await exec(
-		installCommand,
-		// @ts-ignore
-		(stdout: string, stderr: string) => {
-			if (stderr) {
-				console.error(stderr)
-			} else {
-				console.log(stdout)
-			}
+  await exec(
+    installCommand,
+    // @ts-ignore
+    (stdout: string, stderr: string) => {
+      if (stderr) {
+        console.error(stderr);
+      } else {
+        console.log(stdout);
+      }
 
-			Promise.resolve({ stdout, stderr })
-		}
-	)
+      Promise.resolve({ stdout, stderr });
+    }
+  );
 }
