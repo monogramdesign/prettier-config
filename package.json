@@ -1,30 +1,31 @@
 {
-	"name": "@monogram/prettier-config",
-	"version": "0.2.0",
-	"description": "Prettier config used at monogram.io (adapted from @github/prettier-config)",
-	"repository": "monogramdesign/prettier-config",
-	"keywords": [
-		"prettier"
-	],
-	"scripts": {
-		"preinstall-locally": "yarn build",
-		"install-locally": "npm install -g",
-		"build": "tsc --project tsconfig.json",
-		"prepublish": "yarn build"
-	},
-	"bin": {
-		"prettier-config": "dist/setup.js"
-	},
-	"files": [
-		"dist/**/*.js",
-		"prettierrc.config.js"
-	],
-	"license": "MIT",
-	"author": "Monogram",
-	"main": "prettierrc.config.js",
-	"devDependencies": {
-		"@types/node": "^17.0.23",
-		"ts-node": "^10.7.0",
-		"typescript": "^4.6.2"
-	}
+  "name": "@monogram/prettier-config",
+  "version": "0.3.0",
+  "description": "Prettier config used at monogram.io (adapted from @github/prettier-config)",
+  "repository": "monogramdesign/prettier-config",
+  "keywords": [
+    "prettier"
+  ],
+  "scripts": {
+    "preinstall-locally": "yarn build",
+    "install-locally": "npm install -g",
+    "build": "tsc --project tsconfig.json",
+    "prepublish": "yarn build"
+  },
+  "bin": "dist/setup.js",
+  "files": [
+    "dist/**/*.js",
+    "prettierrc.config.js"
+  ],
+  "license": "MIT",
+  "author": "Monogram",
+  "main": "prettierrc.config.js",
+  "dependencies": {
+    "prettier-plugin-tailwindcss": "^0.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "prettier": "^3.0.0",
+    "typescript": "^4.6.2"
+  }
 }
