@@ -1,86 +1,55 @@
 #!/usr/bin/env node
 
-import { stat, writeFile } from "fs";
-import {
-  packageManagers,
-  type PackageManager,
-  installPrefixes,
-  findPackageManager,
-} from "./package-managers";
-import { question, exec, PACKAGE_NAME } from "./utils";
+import { existsSync } from 'node:fs'
+import { writeFile } from 'node:fs/promises'
+import { choosePackageManager } from './package-managers'
+import { execSync } from 'child_process'
+import { INSTALL_PREFIXES, PACKAGE_NAME } from './constants'
+import { PackageManager } from './types'
+import { confirm } from '@inquirer/prompts'
 
-setupPrettier();
+init().catch(console.error)
 
-async function setupPrettier() {
-  const projectDir = process.cwd();
-  const packagePath = `${projectDir}/package.json`;
+async function init() {
+	const projectDir = process.cwd()
+	const packagePath = `${projectDir}/package.json`
 
-  stat(packagePath, (error, stats) => {
-    if (stats) {
-      const packageJson = require(packagePath);
-      packageJson.prettier = PACKAGE_NAME;
+	if (!existsSync(packagePath)) {
+		throw Error(`Can't find package.json in ${projectDir}`)
+	}
 
-      const packageJsonString = JSON.stringify(
-        packageJson,
-        null,
-        2 // TODO: read from @monogram/prettier-config
-      );
+	const packageJson = require(packagePath)
 
-      writeFile(packagePath, packageJsonString, async (err) => {
-        if (err) console.error(err);
-        else {
-          console.log("✅ prettier added to package.json");
+	if (packageJson.prettier) {
+		const yes = await confirm({
+			message: `'prettier' key (${packageJson.prettier}) found in package.json. Do you want to replace it?`
+		})
 
-          const packageManager = await choosePackageManager();
+		if (yes === false) throw Error('Aborted')
+	}
 
-          installDependencies(packageManager);
-        }
-      });
-    } else {
-      throw Error(`Can't found package.json in ${projectDir}`);
-    }
-  });
-}
+	packageJson.prettier = PACKAGE_NAME
 
-async function choosePackageManager() {
-  let packageManager = findPackageManager();
+	const packageJsonString = JSON.stringify(packageJson, null, 2)
 
-  if (packageManager) {
-    console.log(`📦 An existing ${packageManager} installation was found`);
-  } else {
-    const packageManagersOptions = packageManagers.join(", ");
+	const packageManager = await choosePackageManager()
+	await installDependencies(packageManager)
 
-    const chosenManager = await question(
-      `Which package manager should be used? \n[${packageManagersOptions}] `
-    );
-
-    if (packageManagersOptions.includes(chosenManager as PackageManager)) {
-      packageManager = chosenManager as PackageManager;
-    }
-  }
-
-  return packageManager;
+	await writeFile(packagePath, packageJsonString)
 }
 
 async function installDependencies(packageManager: PackageManager) {
-  const installPrefix = installPrefixes[packageManager];
+	const installPrefix = INSTALL_PREFIXES[packageManager]
 
-  const installCommand = `${installPrefix} prettier ${PACKAGE_NAME}`;
+	const installCommand = `${installPrefix}  ${PACKAGE_NAME} prettier`
 
-  console.log(`📦 Installing dependencies...`);
-  console.log(`${installCommand}\n`);
+	console.log(`📦 Installing dependencies...`)
+	console.log(`${installCommand}\n`)
 
-  await exec(
-    installCommand,
-    // @ts-ignore
-    (stdout: string, stderr: string) => {
-      if (stderr) {
-        console.error(stderr);
-      } else {
-        console.log(stdout);
-      }
-
-      Promise.resolve({ stdout, stderr });
-    }
-  );
+	try {
+		execSync(installCommand)
+		return
+	} catch (error) {
+		console.error(error)
+	}
 }
