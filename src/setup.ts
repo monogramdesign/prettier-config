@@ -40,16 +40,9 @@ async function init() {
 
 async function installDependencies(packageManager: PackageManager) {
 	const installPrefix = INSTALL_PREFIXES[packageManager]
-
-	const installCommand = `${installPrefix}  ${PACKAGE_NAME} prettier`
+	const installCommand = `${installPrefix} prettier ${PACKAGE_NAME}`
 
 	console.log(`📦 Installing dependencies...`)
-	console.log(`${installCommand}\n`)
-
-	try {
-		execSync(installCommand)
-		return
-	} catch (error) {
-		console.error(error)
-	}
+	console.log(`👉 ${installCommand}`)
+	execSync(installCommand, { stdio: 'inherit' })
 }
