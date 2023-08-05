@@ -13,9 +13,6 @@ dependencies:
     version: 0.4.1(prettier@3.0.1)
 
 devDependencies:
-  '@monogram/prettier-config':
-    specifier: ^0.2.0
-    version: 0.2.0
   '@types/node':
     specifier: ^17.0.23
     version: 17.0.23
@@ -145,11 +142,6 @@ packages:
     resolution: {integrity: sha512-ACc2N1AnIYtg+bfnitna0OJ1rptWqa8apdDDRQnRWb0R5MEPGAgvqWaDbZahATXOnglqKDRIeHFEQfqxhM6p/g==}
     engines: {node: '>=14.18.0'}
     dev: false
-
-  /@monogram/prettier-config@0.2.0:
-    resolution: {integrity: sha512-aDMa34Bf2G6Ms2SbxPfeBZF1IkmIRoXNqoq8FJznjUm5T4husa0tOm/a+d8RTjgPX6eY4aEwjJYOTR3EPqyFQg==}
-    hasBin: true
-    dev: true
 
   /@types/mute-stream@0.0.1:
     resolution: {integrity: sha512-0yQLzYhCqGz7CQPE3iDmYjhb7KMBFOP+tBkyw+/Y2YyDI5wpS7itXXxneN1zSsUwWx3Ji6YiVYrhAnpQGS/vkw==}
