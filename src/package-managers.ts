@@ -1,28 +1,38 @@
 import { existsSync } from "node:fs";
+import { select, confirm } from "@inquirer/prompts";
+import { LOCK_FILES, PACKAGE_MANAGERS } from "./constants";
+import type { PackageManager } from "./types";
 
-export const packageManagers = ["yarn", "pnpm", "npm"] as const;
+export async function choosePackageManager(): Promise<PackageManager> {
+  const packageManager = findPackageManager();
 
-export type PackageManagers = typeof packageManagers;
-export type PackageManager = (typeof packageManagers)[number];
+  if (packageManager === undefined) {
+    return selectPackageManager();
+  }
 
-export const installPrefixes = {
-  yarn: "yarn add -D",
-  pnpm: "pnpm i -D",
-  npm: "npm i -D",
-} as const;
-
-export const lockFiles = {
-  yarn: `${process.cwd()}/yarn.lock`,
-  pnpm: `${process.cwd()}/pnpm-lock.yaml`,
-  npm: `${process.cwd()}/package-lock.json`,
-};
-
-export function findPackageManager(): PackageManager | null {
-  const found = packageManagers.find((pkg: PackageManager) => {
-    if (existsSync(lockFiles[pkg as PackageManager])) return pkg;
-
-    return null;
+  const useAutoDetected = await confirm({
+    message: `Auto-detected package manager. Use ${packageManager} for installation?`,
+    default: true,
   });
 
-  return found as PackageManager | null;
+  if (useAutoDetected === false) {
+    return selectPackageManager();
+  }
+
+  return packageManager;
+}
+
+function findPackageManager(): PackageManager | undefined {
+  return PACKAGE_MANAGERS.find((packageManager) =>
+    existsSync(LOCK_FILES[packageManager])
+  );
+}
+
+function selectPackageManager() {
+  return select({
+    message: "Which package manager should be used for installation?",
+    choices: PACKAGE_MANAGERS.map((packageManager) => ({
+      value: packageManager,
+    })),
+  });
 }
