@@ -1,4 +1,4 @@
-name: Main Branch Trigger
+name: Main Branch Checks
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  main_branch_job:
+  main_branch_checks:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +21,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Lint step
+        run: pnpm lint
 
       - name: Build step
         run: pnpm build
