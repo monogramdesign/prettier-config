@@ -22,8 +22,7 @@
 	"author": "Monogram",
 	"main": "prettierrc.config.js",
 	"dependencies": {
-		"@inquirer/prompts": "^3.0.1",
-		"prettier-plugin-tailwindcss": "^0.4.1"
+		"@inquirer/prompts": "^3.0.1"
 	},
 	"devDependencies": {
 		"@types/node": "^17.0.23",
