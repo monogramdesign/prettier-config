@@ -7,5 +7,4 @@ module.exports = {
   trailingComma: 'es5',
   bracketSameLine: false,
   semi: false,
-  plugins: ['prettier-plugin-tailwindcss'],
 }
