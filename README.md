@@ -37,20 +37,20 @@ Can also be extended like this:
 ```js
 // .prettierrc.js
 module.exports = {
-  ...require('@monogram/prettier-config'),
-  tabWidth: 2,
-  useTabs: false,
-  overrides: [
-    {
-      files: '*.scss',
-      options: {
-        singleQuote: true,
-        tabWidth: 2,
-        useTabs: false,
-        printWidth: 160,
-      },
-    },
-  ],
+	...require('@monogram/prettier-config'),
+	tabWidth: 2,
+	useTabs: false,
+	overrides: [
+		{
+			files: '*.scss',
+			options: {
+				singleQuote: true,
+				tabWidth: 2,
+				useTabs: false,
+				printWidth: 160,
+			},
+		},
+	],
 }
 ```
 

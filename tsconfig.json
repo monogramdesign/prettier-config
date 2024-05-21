@@ -1,10 +1,10 @@
 {
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "outDir": "./dist",
-    "rootDir": "./src", 
-    "module": "commonjs",
+	"compilerOptions": {
+		"esModuleInterop": true,
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"module": "commonjs",
 		"baseUrl": ".",
-    "moduleResolution": "node"
-  }
+		"moduleResolution": "node"
+	}
 }
