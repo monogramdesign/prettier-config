@@ -1,31 +1,31 @@
 {
-  "name": "@monogram/prettier-config",
-  "version": "0.3.4",
-  "description": "Prettier config used at monogram.io (adapted from @github/prettier-config)",
-  "repository": "monogramdesign/prettier-config",
-  "keywords": [
-    "prettier"
-  ],
-  "scripts": {
-    "build": "rm -rf dist && tsc",
-    "prepublish": "pnpm build",
-    "lint": "prettier --check \"**/*.{js,ts,md}\""
-  },
-  "bin": "dist/setup.js",
-  "files": [
-    "dist/**/*.js",
-    "prettierrc.config.js"
-  ],
-  "license": "MIT",
-  "author": "Monogram",
-  "main": "prettierrc.config.js",
-  "dependencies": {
-    "@inquirer/prompts": "^5.5.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20.19.27",
-    "prettier": "^3.7.4",
-    "typescript": "^5.9.3"
-  },
-  "prettier": "./prettierrc.config.js"
+	"name": "@monogram/prettier-config",
+	"version": "0.4.0",
+	"description": "Prettier config used at monogram.io (adapted from @github/prettier-config)",
+	"repository": "monogramdesign/prettier-config",
+	"keywords": [
+		"prettier"
+	],
+	"scripts": {
+		"build": "rm -rf dist && tsc",
+		"prepublish": "pnpm build",
+		"lint": "prettier --check \"**/*.{js,ts,md}\""
+	},
+	"bin": "dist/setup.js",
+	"files": [
+		"dist/**/*.js",
+		"prettierrc.config.js"
+	],
+	"license": "MIT",
+	"author": "Monogram",
+	"main": "prettierrc.config.js",
+	"dependencies": {
+		"@inquirer/prompts": "^5.5.0"
+	},
+	"devDependencies": {
+		"@types/node": "^20.19.27",
+		"prettier": "^3.7.4",
+		"typescript": "^5.9.3"
+	},
+	"prettier": "./prettierrc.config.js"
 }
