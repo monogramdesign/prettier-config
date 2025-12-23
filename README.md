@@ -22,6 +22,8 @@ yarn add -D @monogram/prettier-config
 npm i -D @monogram/prettier-config
 # or
 pnpm i -D @monogram/prettier-config
+# or
+bun add -D @monogram/prettier-config
 ```
 
 Add the `prettier` key to your `package.json`
